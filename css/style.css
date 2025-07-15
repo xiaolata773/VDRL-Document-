@@ -1,0 +1,256 @@
+/* 基础样式 */
+body {
+    font-family: 'Microsoft YaHei', Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+h1 {
+    color: #2c3e50;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* 全局时间设置 */
+.global-time-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background-color: #e8f4f8;
+    border-radius: 5px;
+}
+
+.global-time-section h3 {
+    margin-top: 0;
+    color: #2c3e50;
+}
+
+.time-inputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    align-items: center;
+}
+
+.time-input {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.time-input label {
+    font-weight: bold;
+    min-width: 100px;
+}
+
+.time-input input[type="date"],
+.time-input input[type="number"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.time-input input[type="number"] {
+    width: 60px;
+}
+
+#applyGlobalTime {
+    padding: 8px 15px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#applyGlobalTime:hover {
+    background-color: #2980b9;
+}
+
+/* 文件分类区域 */
+.category-section {
+    margin-bottom: 20px;
+}
+
+.category {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.category-header {
+    padding: 10px 15px;
+    background-color: #f0f0f0;
+    cursor: pointer;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.category-header:hover {
+    background-color: #e0e0e0;
+}
+
+.category-content {
+    padding: 10px;
+    background-color: white;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+/* 文件项样式 */
+.file-item {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.file-item:last-child {
+    border-bottom: none;
+}
+
+.file-checkbox {
+    margin-right: 10px;
+}
+
+.file-info {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.file-name {
+    font-weight: bold;
+    min-width: 200px;
+}
+
+.file-time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.time-group {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.time-group label {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.time-group input {
+    padding: 5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+/* 子分类样式 */
+.subcategory {
+    margin-left: 20px;
+    padding-left: 15px;
+    border-left: 2px solid #ddd;
+}
+
+.subcategory-title {
+    font-weight: bold;
+    margin: 10px 0 5px 0;
+    color: #555;
+}
+
+/* 全选按钮样式 */
+.select-all-btn {
+    padding: 5px 10px;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px;
+    transition: background-color 0.3s;
+}
+
+.select-all-btn:hover {
+    background-color: #d0d0d0;
+}
+
+.category-header {
+    display: flex;
+    align-items: center;
+}
+
+.category-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* 操作按钮 */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s;
+}
+
+#exportBtn {
+    background-color: #4caf50;
+    color: white;
+}
+
+#exportBtn:hover {
+    background-color: #3d8b40;
+}
+
+#resetBtn {
+    background-color: #f44336;
+    color: white;
+}
+
+#resetBtn:hover {
+    background-color: #d32f2f;
+}
+
+/* 状态信息 */
+.status {
+    text-align: center;
+    margin: 15px 0;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.success {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+.error {
+    background-color: #ffebee;
+    color: #c62828;
+}
