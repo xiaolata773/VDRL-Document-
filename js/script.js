@@ -234,7 +234,7 @@ function createCategoryDropdowns() {
         // 添加全选按钮
         const selectAllBtn = document.createElement('button');
         selectAllBtn.className = 'select-all-btn';
-        selectAllBtn.textContent = 'Select All';
+        selectAllBtn.textContent = '全选';
         selectAllBtn.addEventListener('click', function(e) {
             e.stopPropagation();
             toggleSelectAll(type);
@@ -260,13 +260,45 @@ function createCategoryDropdowns() {
         // 如果有子分类，按子分类分组
         if (subCategories[type]) {
             subCategories[type].forEach(subCat => {
-                const subTitle = document.createElement('div');
-                subTitle.className = 'subcategory-title';
-                subTitle.textContent = subCat.label;
-                content.appendChild(subTitle);
+                // 创建子分类容器
+                const subContainer = document.createElement('div');
+                subContainer.className = 'subcategory-container';
                 
+                // 子分类标题
+                const subHeader = document.createElement('div');
+                subHeader.className = 'subcategory-header';
+                
+                const subTitle = document.createElement('span');
+                subTitle.textContent = subCat.label;
+                
+                // 子分类全选按钮
+                const subSelectAllBtn = document.createElement('button');
+                subSelectAllBtn.className = 'subcategory-select-all';
+                subSelectAllBtn.textContent = '全选';
+                subSelectAllBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    toggleSelectSubcategory(type, subCat.value);
+                });
+                
+                subHeader.appendChild(subTitle);
+                subHeader.appendChild(subSelectAllBtn);
+                
+                // 子分类内容
+                const subContent = document.createElement('div');
+                subContent.className = 'subcategory-content';
+                
+                // 添加子分类文件
                 const subFiles = categoryFiles.filter(file => file.subType === subCat.value);
-                createFileItems(subFiles, content);
+                createFileItems(subFiles, subContent);
+                
+                // 点击标题展开/折叠
+                subHeader.addEventListener('click', function() {
+                    subContent.style.display = subContent.style.display === 'none' ? 'block' : 'none';
+                });
+                
+                subContainer.appendChild(subHeader);
+                subContainer.appendChild(subContent);
+                content.appendChild(subContainer);
             });
             
             // 添加未分类的文件
@@ -288,6 +320,32 @@ function createCategoryDropdowns() {
         categorySection.appendChild(category);
     });
 }
+
+/**
+ * 切换子分类全选/取消全选
+ * @param {string} type - 主分类类型
+ * @param {string} subType - 子分类类型
+ */
+function toggleSelectSubcategory(type, subType) {
+    // 获取该子分类下的所有文件ID
+    const subCategoryFiles = fileData.filter(file => file.type === type && file.subType === subType)
+                                   .map(file => file.id);
+    
+    // 检查是否已经全部选中
+    const allSelected = subCategoryFiles.every(fileId => selectedFiles.includes(fileId));
+    
+    // 切换选中状态
+    subCategoryFiles.forEach(fileId => {
+        const checkbox = document.getElementById(`check-${fileId}`);
+        if (checkbox) {
+            checkbox.checked = !allSelected;
+            toggleFileSelection(fileId, !allSelected);
+        }
+    });
+    
+    updateStatus(allSelected ? `已取消全选 ${subType}` : `已全选 ${subType}`);
+}
+
 
 /**
  * 创建文件项
