@@ -176,6 +176,44 @@ h1 {
     color: #555;
 }
 
+/* 子分类容器样式 */
+.subcategory-container {
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.subcategory-header {
+    padding: 8px 12px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.subcategory-content {
+    padding: 8px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+/* 子分类全选按钮 */
+.subcategory-select-all {
+    padding: 3px 8px;
+    background-color: #e8e8e8;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.subcategory-select-all:hover {
+    background-color: #d8d8d8;
+}
+
 /* 全选按钮样式 */
 .select-all-btn {
     padding: 5px 10px;
